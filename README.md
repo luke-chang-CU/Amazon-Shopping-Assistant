@@ -52,8 +52,19 @@ pip install -r requirements.txt
 ```
 
 ---
+5. **Download the Dataset**
 
-5. **Run the App**
+The project uses a CSV dataset which you can download with wget:
+
+```bash
+# Replace FILE_ID with the ID from the Google Drive link
+FILE_ID=1nkCURmybXFdQY0FxbOcKb_KGy5QB4TDo
+wget --no-check-certificate "https://docs.google.com/uc?export=download&id=${FILE_ID}" -O data/Amazon2023DS_partial_NLP.csv
+```
+
+---
+
+6. **Run the App**
 
 After setting up your environment and installing dependencies, you can run the project:
 

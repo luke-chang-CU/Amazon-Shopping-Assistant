@@ -1,4 +1,22 @@
-# Created by venv; see https://docs.python.org/3/library/venv.html
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+*.pyo
+*.pyd
+.venv/
 venv/
-bin/
 *.csv
+
+# Environment variables
+.env
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Streamlit
+.streamlit/
+
+# Mac OS
+.DS_Store
