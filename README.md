@@ -57,9 +57,7 @@ pip install -r requirements.txt
 The project uses a CSV dataset which you can download with wget:
 
 ```bash
-# Replace FILE_ID with the ID from the Google Drive link
-FILE_ID=1nkCURmybXFdQY0FxbOcKb_KGy5QB4TDo
-wget --no-check-certificate "https://docs.google.com/uc?export=download&id=${FILE_ID}" -O data/Amazon2023DS_partial_NLP.csv
+gdown https://drive.google.com/uc?id=1nkCURmybXFdQY0FxbOcKb_KGy5QB4TDo -O data/Amazon2023DS_partial_NLP.csv
 ```
 
 ---
