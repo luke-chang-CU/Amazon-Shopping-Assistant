@@ -4,8 +4,11 @@ numpy==1.25.0
 pandas==1.5.3
 faiss-cpu==1.10.0  
 transformers==4.51.3
-sentence-transformers==4.1.0
-Pillow==9.4.0      
+sentence-transformers==4.1.0     
 requests==2.32.3   
 openai==1.75.0
 dotenv
+boto3>=1.34.0
+streamlit>=1.28.0
+requests>=2.31.0
+Pillow>=10.0.0
