@@ -66,11 +66,18 @@ gdown https://drive.google.com/uc?id=1nkCURmybXFdQY0FxbOcKb_KGy5QB4TDo -O data/A
 
 After setting up your environment and installing dependencies, you can run the project:
 
+For Amazon Bedrock models(Claude):
+
 ```bash
-streamlit run app.py
+streamlit run app_bedrock.py
 ```
 
-Or version without OpenAI API
+For OpenAI models(ChatGPT):
+
+```bash
+streamlit run app_openai.py
+
+Or version without LLM:
 
 ```
 streamlit run app_offline.py
