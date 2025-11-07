@@ -244,17 +244,14 @@ def slice_query(query_text: str) -> tuple[str, str]:
 
 #     return response.choices[0].message.content
 
-# --- Streamlit UI remains largely unchanged ---
+# --- Streamlit UI ---
 st.set_page_config(page_title="Zuzu", layout="centered")
 st.title("Hi, I'm Zuzu .‿. - Your personal shopping assistant!")
 st.subheader("What can I help you with today?")
 
-col1_, col2_ = st.columns([0.8, 0.2])
-with col1_:
-    query = st.text_input("Type your question here…", key="input")
-with col2_:
-    mode_choice = st.radio("Tech Mode:", ["ON", "OFF"], index = 1)
-
+# --- Settings ---
+# Moved the Tech Mode radio button above the form for a cleaner layout
+mode_choice = st.radio("Tech Mode:", ["ON", "OFF"], index = 1, horizontal=True)
 
 if mode_choice == "ON":
     col1, col2 = st.columns([0.7, 0.3])
@@ -263,14 +260,38 @@ if mode_choice == "ON":
     with col2:
         model_choice = st.radio("Model:", ["Clip-Clip", "Clip-STrans", "Clip-Blip", "Blip-Text"])
 else:
+    # Set defaults for "OFF" mode
     alpha = 0.15
     model_choice = "Clip-STrans"
 
-if st.button("Enter") and query:
-    rag_resp = agent.genrate_report(retrieve_similar_products,query, k=10, alpha=alpha, model_choice=model_choice)
+# --- Search Form ---
+# This form allows submission by pressing "Enter" in the text box
+with st.form(key="search_form"):
+    # Use columns to align the text box and button
+    form_col1, form_col2 = st.columns([0.85, 0.15]) 
+    
+    with form_col1:
+        query = st.text_input(
+            "Type your question here…", 
+            key="input", 
+            label_visibility="collapsed",
+            placeholder="e.g., a red dress for a party"
+        )
+    with form_col2:
+        # This button submits the form
+        submitted = st.form_submit_button("Enter")
+
+# --- Handle Submission ---
+# This logic now runs if the button is clicked OR if "Enter" is pressed
+if submitted and query:
+    with st.spinner("Zuzu is searching..."):
+        rag_resp = agent.genrate_report(retrieve_similar_products, query, k=10, alpha=alpha, model_choice=model_choice)
+    
     st.markdown("### You asked:")
     st.write(query)
     st.markdown("### 💡 Model Response:")
     st.markdown(rag_resp)
 else:
-    st.write("Awaiting your question…")
+    # Only show "Awaiting" if the form hasn't been submitted
+    if not submitted:
+        st.write("Awaiting your question…")
