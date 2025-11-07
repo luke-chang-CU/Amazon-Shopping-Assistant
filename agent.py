@@ -39,7 +39,7 @@ class Agent():
             - Price
             - Rating
             - Pros and cons (if relevant)
-            - show Image (include as a standalone link to help user preview visually)
+            - show Product Image (in markdown)
             - Product URL if available (optional, include only if exists)
             4. Be clear, friendly, energentic. Format recommendations in an easy-to-read way.
             5. Do not mention product numbers or internal labels (e.g., "Product 3").
