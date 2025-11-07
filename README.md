@@ -54,7 +54,7 @@ pip install -r requirements.txt
 ---
 5. **Download the Dataset**
 
-The project uses a CSV dataset which you can download with wget:
+The project uses a CSV dataset which you can download with gdown:
 
 ```bash
 gdown https://drive.google.com/uc?id=1nkCURmybXFdQY0FxbOcKb_KGy5QB4TDo -O data/Amazon2023DS_partial_NLP.csv
