@@ -3,7 +3,7 @@ import json         # For handling JSON data
 import subprocess   # For running system commands like curl
 import time         # For adding delays and timing operations
 from datetime import datetime  # For timestamps and date operations
-
+import streamlit as st
 class Agent():
     def __init__(self):
         """
@@ -39,7 +39,7 @@ class Agent():
             - Price
             - Rating
             - Pros and cons (if relevant)
-            - Image URL (include as a standalone link to help user preview visually)
+            - show Image (include as a standalone link to help user preview visually)
             - Product URL if available (optional, include only if exists)
             4. Be clear, friendly, energentic. Format recommendations in an easy-to-read way.
             5. Do not mention product numbers or internal labels (e.g., "Product 3").
@@ -124,6 +124,8 @@ class Agent():
         except Exception as e:
             # If something goes wrong, return an error message
             return False, f"Error calling Claude: {str(e)}"
+
+    # @st.cache_data(show_spinner=False, max_entries=50)
     def genrate_report(self,retrieve_similar_products, query: str, k: int = 5, alpha: float = 0.5, model_choice: str = "Clip-STrans") -> str:
         output_1, output_2 = self.filter_request(query)
 
