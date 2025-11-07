@@ -126,7 +126,7 @@ class Agent():
             return False, f"Error calling Claude: {str(e)}"
 
     # @st.cache_data(show_spinner=False, max_entries=50)
-    def genrate_report(self,retrieve_similar_products, query: str, k: int = 5, alpha: float = 0.5, model_choice: str = "Clip-STrans") -> str:
+    def genrate_report(self,retrieve_similar_products, query: str, k: int = 20, alpha: float = 0.5, model_choice: str = "Clip-STrans") -> str:
         output_1, output_2 = self.filter_request(query)
 
         retrieved_docs = retrieve_similar_products(output_2, k=k, alpha=alpha, model_choice=model_choice)

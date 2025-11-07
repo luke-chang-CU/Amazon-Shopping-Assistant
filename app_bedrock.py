@@ -285,7 +285,7 @@ with st.form(key="search_form"):
 # This logic now runs if the button is clicked OR if "Enter" is pressed
 if submitted and query:
     with st.spinner("Zuzu is searching..."):
-        rag_resp = agent.genrate_report(retrieve_similar_products, query, k=10, alpha=alpha, model_choice=model_choice)
+        rag_resp = agent.genrate_report(retrieve_similar_products, query, k=20, alpha=alpha, model_choice=model_choice)
     
     st.markdown("### You asked:")
     st.write(query)
